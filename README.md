@@ -1,4 +1,4 @@
-##University Course Management InterfaceOverview
+**University Course Management InterfaceOverview**
 
 A web application that allows a University Supervisor to manage the university's course catalog. Built with React, Vite, Tailwind CSS, and Axios.
 Features
