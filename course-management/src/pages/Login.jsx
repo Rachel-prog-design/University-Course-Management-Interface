@@ -10,11 +10,14 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await API.post("/auth/login", { email, password });
-      localStorage.setItem("token", res.data.token);
+      const res = await API.post("/api/auth/login", { email, password });
+      console.log(res.data);
+      localStorage.setItem("token", res.data.accessToken);
       alert("Login successful!");
       navigate("/dashboard");
     } catch (error) {
+      console.log("Error:", error.response?.status);
+      console.log("Message:", error.response?.data);
       alert("Login failed!");
     }
   };
@@ -27,12 +30,16 @@ export default function Login() {
         <form onSubmit={handleLogin} className="flex flex-col gap-4">
           <input
             type="email"
+            name="email"
+            autoComplete="email"
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
-            className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full text-sm"
           />
           <input
             type="password"
+            name="password"
+            autoComplete="current-password"
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
             className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"

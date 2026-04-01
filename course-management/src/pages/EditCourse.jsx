@@ -18,7 +18,7 @@ export default function EditCourse() {
 
   const updateCourse = async (e) => {
     e.preventDefault();
-    await API.put(`/courses/${id}`, { title, description });
+    await API.put(`/api/courses/${id}`, { title, description });
     alert("Updated!");
     navigate("/dashboard");
   };
