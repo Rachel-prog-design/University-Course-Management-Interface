@@ -7,7 +7,7 @@ import EditCourse from "./pages/EditCourse";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -15,6 +15,6 @@ export default function App() {
         <Route path="/course/:id" element={<CourseDetails />} />
         <Route path="/edit/:id" element={<EditCourse />} />
       </Routes>
-    </BrowserRouter>
+    
   );
 }
