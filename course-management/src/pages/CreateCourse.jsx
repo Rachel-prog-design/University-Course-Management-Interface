@@ -9,18 +9,21 @@ export default function CreateCourse() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      await API.post("/api/courses", { title, description });
-      alert("Course created successfully!");
-      navigate("/dashboard");
-    } catch {
-      alert("Error creating course");
-    } finally {
-      setLoading(false);
-    }
-  };
+  e.preventDefault();
+  setLoading(true);
+  try {
+    const res = await API.post("/api/courses", { title, description });
+    console.log(res.data);
+    alert("Course created successfully!");
+    navigate("/dashboard");
+  } catch (error) {
+    console.log("Error:", error.response?.status);
+    console.log("Message:", error.response?.data);
+    alert("Error creating course");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="min-h-screen bg-gray-100">
